@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+
+import { Post } from '../post';
 
 @Component({
   selector: 'app-posts-create-form',
@@ -10,6 +12,14 @@ export class PostsCreateFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  @Output() postUpdate = new EventEmitter();
+
+  @Input() post: Post;
+
+  onSubmit() {
+    this.postUpdate.emit(this.post);
   }
 
 }

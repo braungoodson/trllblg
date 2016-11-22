@@ -1,3 +1,9 @@
 <p>
   posts-create-form works!
 </p>
+
+<form (ngSubmit)=onSubmit()>
+  <input [(ngModel)]="post.title" name="title">
+  <input [(ngModel)]="post.body" name="body">
+  <button type="submit">submit</button>
+</form>
