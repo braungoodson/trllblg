@@ -3,7 +3,14 @@
 </p>
 
 <form #postCreateForm="ngForm" (ngSubmit)=onSubmit()>
-  <input [(ngModel)]="post.title" name="title">
-  <input [(ngModel)]="post.body" name="body">
-  <button type="submit">submit</button>
+  <div>
+    <input [(ngModel)]="post.title" name="title">
+    <span>{{post.date}}</span>
+  </div>
+  <div>
+    <textarea [(ngModel)]="post.body" name="body" rows="4" cols="50"></textarea>
+  </div>
+  <div>
+    <button type="submit">submit</button>
+  </div>
 </form>

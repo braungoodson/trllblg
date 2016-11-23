@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AngularFire } from 'angularfire2';
 
@@ -11,33 +12,36 @@ import { Post } from '../post';
 })
 export class PostsCreateComponent implements OnInit {
 
-  constructor(private af: AngularFire) {
-    af.auth.login()
+  private post: Post;
+
+  constructor(
+    private af: AngularFire,
+    private router: Router
+  ) {
+    // af.auth.login()
   }
 
   ngOnInit() {
+    this.post = new Post(new Date().getTime(),'This is the title.','And this is the body.');
   }
 
-  post: Post = new Post();
-
   onPostUpdate(postUpdate: Post) {
-    postUpdate.date = new Date();
-    this.af.auth
+    // this.af.auth
       // .login({email:'braungoodson@gmail.com',password:'vanillasky'})
-      .login()
-      .then(r => console.log(r))
-      .then(s => {
+      // .login()
+      // .then(r => console.log(r))
+      // .then(s => {
         this.af.database.list('/posts')
           .push(postUpdate)
           .then(r => {
-            this.af.auth.logout();
+            this.router.navigate(['/posts']);
           })
           .catch(e => console.log('Error:',e))
         ;
         // console.log('ok');
-      })
-      .catch(e => console.log('Error:',e))
-    ;
+      // })
+      // .catch(e => console.log('Error:',e))
+    // ;
   }
 
 }

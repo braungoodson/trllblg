@@ -10,10 +10,14 @@ import { AppComponent } from './app.component';
 import { PostsCreateComponent } from './posts-create/posts-create.component';
 import { HomeComponent } from './home/home.component';
 import { PostsCreateFormComponent } from './posts-create-form/posts-create-form.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostComponent } from './post/post.component';
 
 const app_routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'posts/create', component: PostsCreateComponent }
+  { path: 'posts/create', component: PostsCreateComponent },
+  { path: 'posts', component: PostsComponent },
+  { path: 'posts/:pid', component: PostComponent }
 ];
 
 export const firebase_config = {
@@ -35,7 +39,9 @@ const firebase_auth_config = {
     AppComponent,
     PostsCreateComponent,
     HomeComponent,
-    PostsCreateFormComponent
+    PostsCreateFormComponent,
+    PostsComponent,
+    PostComponent
   ],
   imports: [
     // AngularFireModule.initializeApp(firebase_config),

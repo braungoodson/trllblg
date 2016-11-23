@@ -9,14 +9,13 @@ import { Post } from '../post';
 })
 export class PostsCreateFormComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
   @Output() postUpdate = new EventEmitter();
 
   @Input() post: Post;
+
+  constructor() { }
+
+  ngOnInit() {}
 
   onSubmit() {
     this.postUpdate.emit(this.post);
