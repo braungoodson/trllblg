@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFire } from 'angularfire2';
+
 import { Post } from '../post';
 
 @Component({
@@ -9,7 +11,9 @@ import { Post } from '../post';
 })
 export class PostsCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private af: AngularFire) {
+    af.auth.login()
+  }
 
   ngOnInit() {
   }
@@ -17,8 +21,23 @@ export class PostsCreateComponent implements OnInit {
   post: Post = new Post();
 
   onPostUpdate(postUpdate: Post) {
-    // console.log(postUpdate);
-    // var newPostKey = firebase.database().ref().child('posts').push().key;
+    postUpdate.date = new Date();
+    this.af.auth
+      // .login({email:'braungoodson@gmail.com',password:'vanillasky'})
+      .login()
+      .then(r => console.log(r))
+      .then(s => {
+        this.af.database.list('/posts')
+          .push(postUpdate)
+          .then(r => {
+            this.af.auth.logout();
+          })
+          .catch(e => console.log('Error:',e))
+        ;
+        // console.log('ok');
+      })
+      .catch(e => console.log('Error:',e))
+    ;
   }
 
 }
