@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { PostsCreateComponent } from './posts-create/posts-create.component';
@@ -45,6 +46,7 @@ const firebase_auth_config = {
   ],
   imports: [
     // AngularFireModule.initializeApp(firebase_config),
+    MaterialModule.forRoot(),
     AngularFireModule.initializeApp(firebase_config,firebase_auth_config),
     FormsModule,
     RouterModule.forRoot(app_routes),

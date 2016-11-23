@@ -1,0 +1,30 @@
+.trllblg-card-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trllblg-card-container > md-card {
+  margin: 8px 16px 8px 0;
+  width: 450px;
+}
+
+.trllblg-card-container > md-card:nth-child(1) {
+  margin-top:32px;
+}
+
+.trllblg-card-container > md-card:nth-child(n) {
+  margin-bottom:32px;
+}
+
+.trllblg-card-container > md-card > md-card-title > span:hover {
+  color:#666;
+  cursor:pointer;
+}
+
+
+.trllblg-card-container > img {
+  background-color: gray;
+}

@@ -1,16 +1,17 @@
-<p>
-  posts-create-form works!
-</p>
-
-<form #postCreateForm="ngForm" (ngSubmit)=onSubmit()>
-  <div>
-    <input [(ngModel)]="post.title" name="title">
-    <span>{{post.date}}</span>
-  </div>
-  <div>
-    <textarea [(ngModel)]="post.body" name="body" rows="4" cols="50"></textarea>
-  </div>
-  <div>
-    <button type="submit">submit</button>
-  </div>
-</form>
+<div class="trllblg-card-container">
+  <md-card>
+    <form #postCreateForm="ngForm" (ngSubmit)=onSubmit()>
+      <md-card-subtitle>{{post.date}}</md-card-subtitle>
+      <md-card-title><input [(ngModel)]="post.title" name="title"></md-card-title>
+      <md-card-content>
+        <textarea [(ngModel)]="post.body" name="body" rows="4" cols="50"></textarea>
+      </md-card-content>
+      <md-card-actions>
+        <button type="submit" md-button>submit</button>
+      </md-card-actions>
+      <md-card-footer>
+        <md-progress-bar mode="buffer" [value]="33" [bufferValue]="66"></md-progress-bar>
+      </md-card-footer>
+    </form>
+  </md-card>
+</div>
